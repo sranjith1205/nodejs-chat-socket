@@ -43,6 +43,15 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('User was disconnected');
     });
+
+    socket.emit('newEmail', {
+        from: 'mike@dxc.com',
+        text: 'Hi Ranjith, What a surprise!!'
+    });
+
+    socket.on('createEmail', function(mail)  {
+        console.log('createEmail', mail)
+    });
 });
 server.listen(port, () => {
     console.log(`Server is up on port ${port}`)

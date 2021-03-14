@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Web Socket Chat App</title>
 </head>
 <body>
     <p>Welcome to chat app</p>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // it is similar to io.on('connection', (socket) => {
+            // auto connected when server is up  - this callback fun used to identify the server
+            // connect
+        const socket = io();
+        socket.on('connect', () => {
+            console.log('Connected to server');
+        });
+
+        // here, used to identify when server connect is down using below callback
+        socket.on('disconnect', () => {
+            console.log('Disconnected from server');
+        });
+    </script>
 </body>
 </html>
